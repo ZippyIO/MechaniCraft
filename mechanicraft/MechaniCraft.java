@@ -2,19 +2,17 @@ package mechanicraft;
 
 import mechanicraft.blocks.BlockAnvilCraft;
 import mechanicraft.blocks.BlockBetterTable;
-
 import mechanicraft.blocks.BlockHighSpeedFurnace;
 import mechanicraft.blocks.BlockInputFurnace;
 import mechanicraft.blocks.BlockLavaFurnace;
 import mechanicraft.blocks.BlockPML2;
 import mechanicraft.blocks.BlockProjectTable;
 import mechanicraft.blocks.BlockRedFurnace;
-
 import mechanicraft.blocks.BlockSolarFurnace;
 import mechanicraft.blocks.BlockSpiritTable;
 import mechanicraft.blocks.BlockSteamFurnace;
 import mechanicraft.blocks.BlockSwissMinningBlock;
-
+import mechanicraft.explosion.BlockTntFiga;
 import mechanicraft.info.MechaTab;
 import mechanicraft.info.Names;
 import mechanicraft.items.ItemHammer;
@@ -22,15 +20,14 @@ import mechanicraft.items.ItemHandSaw;
 import mechanicraft.items.ItemNail;
 import mechanicraft.items.ItemPortableCraft;
 import mechanicraft.items.ItemWrench;
-import mechanicraft.pipes.BlockSoftCopperPipe;
 import mechanicraft.proxy.CommonProxy;
-import mechanicraft.render.PipeRender;
 import mechanicraft.render.RenderHighSpeed;
 import mechanicraft.render.RenderInpBlock;
 import mechanicraft.render.RenderLavaBlock;
 import mechanicraft.render.RenderRedFurnace;
 import mechanicraft.render.RenderSolarFurnace;
 import mechanicraft.render.RenderSteamFurnace;
+import mechanicraft.tileentity.TePT;
 import mechanicraft.tileentity.TileEntityHighSpeedFurnace;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -110,9 +107,11 @@ public class MechaniCraft
 	public static Block swissblock;
 	public static Block driller;
 	public static Block redfurnace;
+	//TODO Test TNT
+	public static Block freezetnt;
 	public static Block softCopper;
 	
-	//TODO
+	//TODO COMPRESSOR IC2 STUFF
 	public static Block repairTable;
 	public static Item wrench;
     //Active furnaces
@@ -160,8 +159,7 @@ public class MechaniCraft
 		spiritable = new BlockSpiritTable(3709).setCreativeTab(tab).setUnlocalizedName(Names.SPIRIT_TABLE_NAME_UNLOCALIZED);
 		swissblock = new BlockSwissMinningBlock(3710, false, false).setCreativeTab(tab).setUnlocalizedName(Names.SWISS_TABLE_NAME_UNLOCALIZED);
 		driller = new BlockPML2(3711).setCreativeTab(tab).setUnlocalizedName(Names.DRILLER_NAME_UNLOCALIZED);
-		softCopper = new BlockSoftCopperPipe(3200).setCreativeTab(tab).setUnlocalizedName(Names.SOFT_COPPER_PIPE_NAME_UNLOCALIZED);
-		
+		freezetnt = new BlockTntFiga(3800).setUnlocalizedName("randomshit");
 		//Initialize active furnaces
 		lavaActive = new BlockLavaFurnace(3102, true);
 		steamActive = new BlockSteamFurnace(3103, true);
@@ -206,6 +204,7 @@ public class MechaniCraft
 		regItem(hammer, Names.HAMMER_NAME);
 		regItem(handsaw, Names.HANDSAW_NAME);
 		regItem(wrench, Names.WRENCH_NAME);
+		regBlock(freezetnt, "Freeze TNT");
 		
 		
 		
@@ -225,6 +224,7 @@ public class MechaniCraft
 		RenderingRegistry.registerBlockHandler(2109, RenderInpBlock.INSTANCE);
 		//RenderingRegistry.registerBlockHandler(2010, PipeRender.INSTANCE);
 		RenderingRegistry.registerBlockHandler(2111, RenderRedFurnace.INSTANCE);
+		GameRegistry.registerTileEntity(TePT.class, "ProjectTableTile");
 	
 		
 	}

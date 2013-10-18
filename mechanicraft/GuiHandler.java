@@ -53,7 +53,7 @@ public class GuiHandler implements IGuiHandler
 			case 4: if (ContainerPortTable.canBeWorkbench(player.getHeldItem())) {
 		        return new ContainerPortTable(player.inventory, world, x, y, z);
 			}
-			case 5: return world.getBlockId(x, y, z) == MechaniCraft.projecttable.blockID && tile_entity instanceof TePT ? new ContainerProjectTable((TePT)tile_entity, player.inventory, world, x, y, z) : null;
+			case 5: return world.getBlockId(x, y, z) == MechaniCraft.projecttable.blockID && tile_entity instanceof TePT ? new ContainerProjectTable((TePT)tile_entity, player, world, x, y, z) : null;
 			case 6: return new RedContainer(player.inventory, (TileEntityRedFurnace) tile_entity);	
 			case 7: return new ContainerSolarFurnace(player.inventory, (TileEntitySolarFurnace) tile_entity);
 			case 8: return new ContainerSpiritTable(player.inventory, (world), x, y, z);
@@ -78,7 +78,7 @@ public class GuiHandler implements IGuiHandler
 			case 2: return new GuiHighSpeedFurnace(player.inventory, (TileEntityHighSpeedFurnace) tile_entity);
 			case 3: return new GuiLavaFurnace(player.inventory, (TileEntityLavaFurnace) tile_entity);		
 			case 4: return new GuiPortTable(new ContainerPortTable(player.inventory, world, x, y, z));
-			case 5: return world.getBlockId(x, y, z) == MechaniCraft.projecttable.blockID && tile_entity instanceof TePT ? new ProjectTableGui(player.inventory, (TePT)tile_entity, world, x, y, z) : null;
+			case 5: return world.getBlockId(x, y, z) == MechaniCraft.projecttable.blockID && tile_entity instanceof TePT ? new ProjectTableGui(player, (TePT)tile_entity, world, x, y, z) : null;
 			case 6: return new RedGui(player.inventory, (TileEntityRedFurnace) tile_entity);		
 			case 7: return new GuiSolarFurnace(player.inventory, (TileEntitySolarFurnace) tile_entity);
 			case 8: return new GuiSpiritTable(player.inventory, (world), x, y, z);

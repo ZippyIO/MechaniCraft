@@ -1,6 +1,9 @@
 package mechanicraft.container;
 
 import mechanicraft.MechaniCraft;
+import mechanicraft.gui.SlotProj;
+import mechanicraft.lib.inventory.BasicInventoryII;
+import mechanicraft.tileentity.TePT;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -18,6 +21,7 @@ public class ContainerSwissCrafting extends Container
     /** The crafting matrix inventory (3x3). */
     public InventoryCrafting craftMatrix = new InventoryCrafting(this, 3, 3);
     public IInventory craftResult = new InventoryCraftResult();
+   
     private World worldObj;
     private int posX;
     private int posY;
@@ -25,11 +29,14 @@ public class ContainerSwissCrafting extends Container
 
     public ContainerSwissCrafting(InventoryPlayer par1InventoryPlayer, World par2World, int par3, int par4, int par5)
     {
+    
+		
         this.worldObj = par2World;
         this.posX = par3;
         this.posY = par4;
         this.posZ = par5;
         this.addSlotToContainer(new SlotCrafting(par1InventoryPlayer.player, this.craftMatrix, this.craftResult, 0, 124, 35));
+        
         int l;
         int i1;
 
@@ -54,6 +61,11 @@ public class ContainerSwissCrafting extends Container
             this.addSlotToContainer(new Slot(par1InventoryPlayer, l, 8 + l * 18, 142));
         }
 
+        for(int row = 0; row < 1; ++row){
+        	this.addSlotToContainer(new SlotCrafting(par1InventoryPlayer.player, this.craftMatrix, this.craftResult, 40, 16, 36));
+        }
+        
+        
         this.onCraftMatrixChanged(this.craftMatrix);
     }
 
@@ -100,6 +112,7 @@ public class ContainerSwissCrafting extends Container
     /**
      * Called when a player shift-clicks on a slot. You must override this or you will crash when someone does that.
      */
+    @Override
     public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2)
     {
         ItemStack itemstack = null;

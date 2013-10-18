@@ -3,6 +3,7 @@ package mechanicraft.gui;
 import mechanicraft.container.ContainerProjectTable;
 import mechanicraft.tileentity.TePT;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
@@ -20,11 +21,11 @@ public class ProjectTableGui extends GuiContainer{
 
 	private static final ResourceLocation field_110422_t = new ResourceLocation("mechanicraft", "textures/gui/projgui.png");
 
-	public ProjectTableGui(InventoryPlayer playerInv, TePT tile_entity, World world, int x, int y, int z)
+	public ProjectTableGui(EntityPlayer playerInv, TePT tile_entity, World world, int x, int y, int z)
 	{
 	         super(new ContainerProjectTable((TePT) tile_entity, playerInv, world, x, y, z));
 	         xSize = 176;
-	         ySize = 222;
+	         ySize = 240;
 	}
 
 	/**
@@ -52,4 +53,6 @@ public class ProjectTableGui extends GuiContainer{
 	        super.onGuiClosed();
 	    }
 
+	 
+	 
 }
